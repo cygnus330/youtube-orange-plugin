@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YT Orange</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <script src="{{ url_for('static', filename='js/loadtext.js') }}"></script>
+    <script>function submitForm() {
+        var v = document.getElementById('vid').value;
+        var url = "/download";
+        window.location.href = url + "?v=" + encodeURIComponent(v);
+    }</script>
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="header__start">
+                <a class="header__title" href="/">
+                    <img src="{{ url_for('static', filename='img/icon.svg') }}" alt='headerlogo' style="height: 70%;">
+                </a>
+            </div>
+
+            <div class="header__center">
+                <form class="header__form" onsubmit="return false;">
+                    <input id="vid" class="header__input--text" type="text" name="v" placeholder="영상 주소">
+                    <button id="search" class="header__input--button" type="submit" onclick="submitForm()">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div class="header__start">
+                <div id="header__speed" style="height: 100%; align-content: center; padding-right: 10px">{{ speed }} Mbps</div>
+                <div class="header__title" style="padding-right: 5px; padding-left: 10px">
+                    <img src="{{ url_for('static', filename='img/speedmeter.svg') }}" alt='speed' style="height: 65%;">
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block body %}
+<div id="video__info">
+    <div>동영상 정보 처리 중</div>
+</div>
+<script src="{{ url_for('static', filename='js/orange.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    const v = "{{ v }}";
+    const res = "{{ res }}";
+    var status = "{{ status }}";
+    let intervalid = null;
+
+    function checkstat() {
+        $.ajax({
+            url: '/orange-stat/{{ v }}/{{ res }}',
+            method: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                status = data.status;
+                getinfo(v, res, status);
+            },
+            error: function() {
+                console.error("오류", error);
+            }
+        });
+
+        if(status == "1") {
+            clearInterval(intervalid);
+            intervalid = null;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', getinfo(v, res, status));
+    document.addEventListener('DOMContentLoaded', function() {
+        intervalid = setInterval(checkstat, 3000);
+    });
+</script>
+{% endblock %}

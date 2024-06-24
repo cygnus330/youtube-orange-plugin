@@ -1,0 +1,40 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    align-items: center;
+}
+
+main {
+    position: relative;
+    padding: 1% 5% 1% 5%;
+    align-content: center;
+    align-items: center;
+    width: 90%;
+    height: calc(97% - 90px);
+}
+
+.video__res {
+    display: flex;
+}
+
+.video__dur {
+    margin: 15px;
+}
+
+.video__res__info {
+    margin: 15px;
+    padding: 5px;
+    border: none;
+    align-items: center;
+    background: #FFB730;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+}

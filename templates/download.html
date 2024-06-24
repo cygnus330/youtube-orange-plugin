@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block body %}
+<div id="video__info">
+    <div id="loading__text">동영상 정보 처리 중</div>
+</div>
+<script src="{{ url_for('static', filename='js/download.js') }}"></script>
+<script>
+    var v = "{{ v }}";
+    document.addEventListener('DOMContentLoaded', getinfo(v));
+</script>
+{% endblock %}
